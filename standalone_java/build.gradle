@@ -1,0 +1,34 @@
+apply plugin: 'java'
+apply plugin: 'idea'
+
+def projectName = 'JavaAndKotlin'
+def mainClass = 'demo.HelloWorld'
+
+
+sourceCompatibility = 1.8
+targetCompatibility = 1.8
+
+
+repositories {
+    jcenter()
+}
+
+dependencies {
+    compile files('../standalone_kotlin/build/libs/KotlinPlayground-fat.jar')
+    testCompile 'junit:junit:4.12'
+}
+
+idea {
+    project {
+        jdkName = '1.8'
+        languageLevel = '1.8'
+
+        vcs = 'Git'
+
+        outputFile = new File(outputFile.parentFile, projectName + '.ipr')
+    }
+    module {
+        downloadJavadoc = true
+        downloadSources = false
+    }
+}
