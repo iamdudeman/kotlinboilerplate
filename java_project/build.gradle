@@ -1,13 +1,11 @@
 apply plugin: 'java'
 apply plugin: 'idea'
 
-def projectName = 'JavaAndKotlin'
+def projectName = 'java_project'
 def mainClass = 'demo.HelloWorld'
 
-
-sourceCompatibility = 18.3
-targetCompatibility = 18.3
-
+sourceCompatibility = 1.9
+targetCompatibility = 1.9
 
 repositories {
     jcenter()
@@ -20,8 +18,8 @@ dependencies {
 
 idea {
     project {
-        jdkName = '18.3'
-        languageLevel = '18.3'
+        jdkName = '1.9'
+        languageLevel = '1.9'
 
         vcs = 'Git'
 
