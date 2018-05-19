@@ -1,9 +1,13 @@
+val mainClass = "test.HelloWorldKt"
 val implementationTitle = "Gradle Jar File Example"
 val implementationVersion = 1
-val mainClass = "test.HelloWorldKt"
+val jdkName = "18.3"
+
+// Dependency version (NOTE: must update plugins block directly as well)
 val kotlinVersion = "1.2.41"
 val dokkaVersion = "0.9.16"
 val junitVersion = "4.12"
+
 
 plugins {
   application
@@ -12,15 +16,16 @@ plugins {
   id("org.jetbrains.dokka") version "0.9.16"
 }
 
+
 application {
   mainClassName = mainClass
 }
 
 dependencies {
   compile(kotlin("stdlib"))
-  compile("org.jetbrains.dokka:dokka-gradle-plugin:0.9.16")
-  testCompile("junit:junit:4.12")
-  testCompile("org.jetbrains.kotlin:kotlin-test-junit:1.2.41")
+  compile("org.jetbrains.dokka:dokka-gradle-plugin:$dokkaVersion")
+  testCompile("junit:junit:$junitVersion")
+  testCompile("org.jetbrains.kotlin:kotlin-test-junit:$kotlinVersion")
 }
 
 repositories {
@@ -38,12 +43,12 @@ val fatJar = task("fatJar", type = Jar::class) {
   with(tasks["jar"] as CopySpec)
 }
 
-java.setSourceCompatibility(1.8)
-java.setTargetCompatibility(1.8)
+java.setSourceCompatibility(jdkName)
+java.setTargetCompatibility(jdkName)
 
 idea.project.vcs = "Git"
-idea.project.jdkName = "1.8"
-idea.project.setLanguageLevel("1.8")
+idea.project.jdkName = jdkName
+idea.project.setLanguageLevel(jdkName)
 idea.module.isDownloadJavadoc = true
 idea.module.isDownloadSources = false
 
@@ -65,4 +70,3 @@ tasks {
     outputDirectory = "$buildDir/docs/java"
   }
 }
-

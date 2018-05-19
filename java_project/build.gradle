@@ -5,8 +5,8 @@ def projectName = 'JavaAndKotlin'
 def mainClass = 'demo.HelloWorld'
 
 
-sourceCompatibility = 1.8
-targetCompatibility = 1.8
+sourceCompatibility = 18.3
+targetCompatibility = 18.3
 
 
 repositories {
@@ -14,14 +14,14 @@ repositories {
 }
 
 dependencies {
-    compile files('../standalone_kotlin/build/libs/KotlinPlayground-fat.jar')
+    compile files('../kotlin_project/build/libs/kotlin_project-fat.jar')
     testCompile 'junit:junit:4.12'
 }
 
 idea {
     project {
-        jdkName = '1.8'
-        languageLevel = '1.8'
+        jdkName = '18.3'
+        languageLevel = '18.3'
 
         vcs = 'Git'
 
